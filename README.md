@@ -18,11 +18,15 @@ This project was created using React Native Expo
 ## Start Frontend on localhost
 
 1. Download/clone and open path to **"storefront"**
-2. Run yarn install
+2. Install Expo
+
+   ```npm install expo```
+   
+3. Run yarn install
    
    ```yarn```
    
-3. Run Yarn start and follow terminal screen instructions for select device 
+4. Run Yarn start and follow terminal screen instructions for select device 
    
    ```yarn start```
    
