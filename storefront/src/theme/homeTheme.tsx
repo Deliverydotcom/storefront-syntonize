@@ -33,7 +33,7 @@ export const homeStyles = (fadeAnim: any) =>
       fontFamily: "OpenSans-Regular",
     },
     textNumberBlue: {
-      color: colors.fourth,
+      color: colors.primary,
       fontSize: 15,
       fontFamily: "OpenSans-Regular",
     },
@@ -57,7 +57,7 @@ export const homeStyles = (fadeAnim: any) =>
     },
     bigNumberBlue: {
       alignItems: "center",
-      color: colors.fourth,
+      color: colors.primary,
       fontSize: 30,
       fontFamily: "OpenSans-Bold",
     },

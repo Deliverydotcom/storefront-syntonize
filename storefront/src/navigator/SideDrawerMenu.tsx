@@ -23,9 +23,10 @@ import {
 } from "react-native";
 import { BottomNavigation, Header } from "../components";
 import { StackScreenProps } from "@react-navigation/stack";
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import { useFocusEffect } from "@react-navigation/native";
-import { appStyles } from "../theme";
+import { appStyles, colors } from "../theme";
+import { AuthContext } from "../context";
 
 const Drawer: any = createDrawerNavigator();
 interface Props extends StackScreenProps<any, any> {}
@@ -36,11 +37,14 @@ export const SideDrawermenu = ({ route, navigation }: Props) => {
   return (
     <Drawer.Navigator
       screenOptions={{
+        drawerStyle: {
+          backgroundColor: colors.backgapplight,
+        },
         animationEnabled: true,
         animationTypeForReplace: "push",
         overlayColor: "transparent",
         drawerStatusBarAnimation: "fade",
-        drawerType: dimensions.width >= 768 ? "permanent" : "slide",
+        drawerType: dimensions.width >= 768 ? "slide" : "slide",
         header: ({ navigation, route, options }: any) => {
           const title = getHeaderTitle(options, route.name);
           return <Header title={title} navigation={navigation} />;
@@ -62,6 +66,8 @@ export const SideDrawermenu = ({ route, navigation }: Props) => {
 };
 
 const MenuHeaderContent = ({ navigation }: DrawerContentComponentProps) => {
+  const { logOut } = useContext(AuthContext);
+
   return (
     <DrawerContentScrollView>
       <View style={appStyles.avatarContainer}>
@@ -77,14 +83,14 @@ const MenuHeaderContent = ({ navigation }: DrawerContentComponentProps) => {
           onPress={() => navigation.navigate("Home")}
           style={appStyles.menuButton}
         >
-          <Icon name="home-outline" size={25} />
+          <Icon name="home-outline" size={25} style={appStyles.menuIcon} />
           <Text style={appStyles.menuItem}>Home</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => navigation.navigate("ConfigScreen")}
           style={appStyles.menuButton}
         >
-          <Icon name="settings-outline" size={25} />
+          <Icon name="settings-outline" size={25} style={appStyles.menuIcon} />
           <Text style={appStyles.menuItem}>Config</Text>
         </TouchableOpacity>
 
@@ -92,7 +98,7 @@ const MenuHeaderContent = ({ navigation }: DrawerContentComponentProps) => {
           onPress={() => navigation.navigate("PromoteScreen")}
           style={appStyles.menuButton}
         >
-          <Icon name="ribbon" size={25} />
+          <Icon name="ribbon" size={25} style={appStyles.menuIcon} />
           <Text style={appStyles.menuItem}>Promote</Text>
         </TouchableOpacity>
 
@@ -100,11 +106,16 @@ const MenuHeaderContent = ({ navigation }: DrawerContentComponentProps) => {
           onPress={() => navigation.navigate("HelpScreen")}
           style={appStyles.menuButton}
         >
-          <Icon name="help-circle-outline" size={25} />
+          <Icon
+            name="help-circle-outline"
+            size={25}
+            style={appStyles.menuIcon}
+          />
           <Text style={appStyles.menuItem}>Help</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={appStyles.menuButton}>
-          <Icon name="log-out-outline" size={25} />
+
+        <TouchableOpacity onPress={logOut} style={appStyles.menuButton}>
+          <Icon name="log-out-outline" size={25} style={appStyles.menuIcon} />
           <Text style={appStyles.menuItem}>Logout</Text>
         </TouchableOpacity>
       </View>
