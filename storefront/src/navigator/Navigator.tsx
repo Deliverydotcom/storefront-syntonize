@@ -22,7 +22,7 @@ const Stack = createStackNavigator();
 export const Navigator = () => {
   const { status } = useContext(AuthContext);
   console.log(status);
-  if (Platform.OS !== "web" && status === "checking") return <LoadingScreen />;
+  // if (Platform.OS !== "web" && status === "checking") return <LoadingScreen />;
 
   return (
     <>
