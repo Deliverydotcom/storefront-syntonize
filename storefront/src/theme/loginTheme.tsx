@@ -3,8 +3,15 @@ import { StyleSheet } from "react-native";
 export const loginStyles = StyleSheet.create({
   globalContainer: {
     flex: 1,
-    paddingHorizontal: 30,
+    paddingHorizontal: 40,
     justifyContent: "center",
+    height: 600,
+    marginBottom: 50,
+  },
+  linearGradient: {
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 5,
     height: 600,
     marginBottom: 50,
   },
@@ -17,19 +24,29 @@ export const loginStyles = StyleSheet.create({
   subtext: {
     alignItems: "center",
 
-    fontSize: 16,
+    fontSize: 15,
     textAlign: "center",
     color: "white",
     paddingTop: 15,
     marginBottom: 20,
   },
   label: { marginTop: 25, color: "white", fontWeight: "bold" },
-  inputField: { color: "white", fontSize: 20, marginTop: 30 },
+  inputField: {
+    backgroundColor: "white",
+    color: "#333333",
+    fontSize: 15,
+    padding: 12,
+    marginTop: 30,
+    borderRadius: 5,
+  },
   inputFieldIOS: {
-    color: "white",
-    fontSize: 20,
-    borderBottomColor: "white",
-    borderBottomWidth: 2,
+    borderBottomWidth: 0,
+    backgroundColor: "white",
+    color: "#333333",
+    fontSize: 15,
+    padding: 12,
+    marginTop: 30,
+    borderRadius: 5,
   },
   buttonContainer: {
     alignItems: "center",
@@ -38,8 +55,8 @@ export const loginStyles = StyleSheet.create({
   button: {
     //alignSelf: 'stretch',
     borderWidth: 2,
-    //borderColor: 'white',
-    backgroundColor: "#21130d",
+    borderColor: "#009295",
+    backgroundColor: "#009295",
     paddingVertical: 10,
     paddingHorizontal: 120,
     borderRadius: 100,
@@ -54,7 +71,7 @@ export const loginStyles = StyleSheet.create({
     marginTop: 50,
   },
   forgotText: {
-    color: "rgba(255,255,255,0.8)",
+    color: "#8E7180",
     fontWeight: "bold",
   },
 });

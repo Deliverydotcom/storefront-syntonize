@@ -18,13 +18,15 @@ export const homeStyles = (fadeAnim: any) =>
       fontFamily: "OpenSans-Regular",
     },
     textforIcons: {
-      color: colors.eighth,
+      color: "white",
       fontSize: 12,
+      marginRight: 15,
       fontFamily: "OpenSans-Regular",
     },
     testDataSettings: {
       color: colors.eighth,
       fontSize: 12,
+
       fontFamily: "OpenSans-Regular",
     },
     textNumber: {
@@ -33,7 +35,7 @@ export const homeStyles = (fadeAnim: any) =>
       fontFamily: "OpenSans-Regular",
     },
     textNumberBlue: {
-      color: colors.fourth,
+      color: colors.primary,
       fontSize: 15,
       fontFamily: "OpenSans-Regular",
     },
@@ -57,7 +59,7 @@ export const homeStyles = (fadeAnim: any) =>
     },
     bigNumberBlue: {
       alignItems: "center",
-      color: colors.fourth,
+      color: colors.primary,
       fontSize: 30,
       fontFamily: "OpenSans-Bold",
     },

@@ -1,0 +1,19 @@
+{
+  "expo": {
+    "name": "store-front",
+    "slug": "store-front",
+    "version": "1.0.0",
+    "sdkVersion": "48.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "ios": {
+      "bundleIdentifier": "y"
+    },
+    "android": {
+      "package": "com.anonymous.storefront"
+    }
+  }
+}

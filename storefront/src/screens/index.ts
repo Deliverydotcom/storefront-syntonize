@@ -1,3 +1,5 @@
+export *  from './OrdersHistory';
+
 export * from './PromoteScreen';
 
 export * from './ConfigScreen';
