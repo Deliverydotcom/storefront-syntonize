@@ -1,11 +1,16 @@
 import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View, Platform } from "react-native";
 import Svg from "react-native-svg";
+import LogoDelivery from "../assets/img/logo-delivery.svg";
 
 export const WhiteLogo = () => {
   return (
     <View style={{ alignItems: "center" }}>
-      <Svg height="101" width="101" viewBox="0 0 100 100"></Svg>
+      {Platform.OS === "web" ? (
+        <img src="../assets/img/logo-delivery.svg" height={90} width={90} />
+      ) : (
+        <LogoDelivery height={90} width={90} fill={"#666666"} />
+      )}
 
       <Text style={{ fontSize: 25, color: "white" }}>StoreFront</Text>
     </View>

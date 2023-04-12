@@ -14,18 +14,33 @@ export const colors = {
   nineth: "#1580b0",
   tenth: "#E8E6E0",
   darklight: "#666666",
+  redrose: "#CA506E",
+  redrosebold: "#c4123e",
+  redroselight: "#CE7F9C",
 };
 
 export const appStyles = StyleSheet.create({
   app: {
-    flex: 4, // the number of columns you want to devide the screen into
+    flex: 4,
+    height: 600,
+  },
+  linearGradient: {
     paddingHorizontal: 10,
     paddingVertical: 10,
-    height: "100%",
-    backgroundColor: colors.backgapp,
+    minHeight: 600,
   },
+
+  whiteLine: {
+    borderBottomColor: "#ffffff",
+    borderBottomWidth: 1,
+  },
+  greyLine: { borderBottomColor: "#BCB9BC", height: 1, borderBottomWidth: 1 },
+
   row: {
     flexDirection: "row",
+  },
+  column: {
+    flexDirection: "column",
   },
   card: {
     backgroundColor: "white",
@@ -37,14 +52,15 @@ export const appStyles = StyleSheet.create({
   },
 
   cardbottom: {
-    backgroundColor: "white",
+    backgroundColor: "transparent",
     borderBottomLeftRadius: 8,
     borderBottomRightRadius: 8,
     border: 0,
   },
   cardtop: {
-    borderTopLeftRadius: 8,
-    borderTopRightRadius: 8,
+    borderTopLeftRadius: 0,
+    borderTopRightRadius: 0,
+    marginRight: 4,
   },
   avatarContainer: {
     alignItems: "center",

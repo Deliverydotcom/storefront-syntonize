@@ -8,10 +8,11 @@ const { dbConnection } = require("../database/config");
 class Server {
   constructor() {
     this.app = express();
-
+    this.router = express.Router();
     this.port = process.env.PORT;
 
     this.paths = {
+      start: "/",
       auth: "/api/auth",
       buscar: "/api/buscar",
       categorias: "/api/categorias",
@@ -44,6 +45,7 @@ class Server {
     // Directorio Público
     this.app.use(express.static("public"));
 
+    this.app.use("/.netlify/functions/server", this.router);
     // Fileupload - Carga de archivos
     this.app.use(
       fileUpload({
@@ -70,4 +72,5 @@ class Server {
   }
 }
 
-module.exports = Server;
+module.exports.handler = serverless(Server);
+//module.exports = Server;

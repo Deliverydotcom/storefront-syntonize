@@ -18,13 +18,15 @@ export const homeStyles = (fadeAnim: any) =>
       fontFamily: "OpenSans-Regular",
     },
     textforIcons: {
-      color: colors.eighth,
+      color: "white",
       fontSize: 12,
+      marginRight: 15,
       fontFamily: "OpenSans-Regular",
     },
     testDataSettings: {
       color: colors.eighth,
       fontSize: 12,
+
       fontFamily: "OpenSans-Regular",
     },
     textNumber: {

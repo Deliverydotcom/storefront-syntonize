@@ -1,30 +1,32 @@
 
 import { useEffect, useState } from 'react';
-import { Dimensions, Platform } from 'react-native';
+import { Dimensions, Platform, useWindowDimensions } from 'react-native';
 
 export const useDimensions = () => {
+  const {height, width, scale, fontScale} = useWindowDimensions();
 
-    const [screenDims, setScreen] = useState(Dimensions.get('screen'));
-    const [windowDims, setWindow] = useState(Dimensions.get('window'));
    const [dimen, setDimen] = useState('');
 
+
     useEffect(() => {
-      const handleChange = ({ screen, window: win }:any) => {
-        setScreen(screen);
-        setWindow(win);  
-        console.log(windowDims.height)
-        if(windowDims.height < 400){setDimen('landscape')} else if(screenDims.height >= 400) {setDimen('portrait')}
-      };
-     
-      const subscription = Dimensions.addEventListener('change', handleChange);
+      
+      console.log(height, width, scale, fontScale)
+ 
+        console.log('height:', height,'dimensions:',dimen, 'platform:', Platform.OS)
+        //     if(windowDims.height < 400 && Platform.OS==='ios'){setDimen('landscapeIOS')} 
+      //  else if(windowDims.height < 400 && Platform.OS==='android'){setDimen('landscapeAndroid')} 
+      //if(windowDims.height > 400 && Platform.OS==='ios') {setDimen('portraitIOS')}
+      //  else if(windowDims.height >= 400 && Platform.OS==='android') {setDimen('portraitAndroid')}
+        if(height < 400 && Platform.OS==='ios'){setDimen('landscapeIOS')} 
+        else if(height < 400 && Platform.OS==='android'){setDimen('landscapeAndroid')} 
+        else if(height > 400 && Platform.OS==='ios') {setDimen('portraitIOS')}
+        else if(height >= 400 && Platform.OS==='android') {setDimen('portraitAndroid')}
+        else {
+          setDimen('portraitIOS');
+        }
+        
 
-      return () => {
-        subscription.remove();
-      }; 
+    }, [dimen,setDimen,height, width]);
 
-
-
-    }, [setScreen, setWindow]);
-
-return {dimen,screenDims,windowDims} 
+return {dimen} 
 }

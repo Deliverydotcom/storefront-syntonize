@@ -6,16 +6,13 @@ import {
 import {
   ConfigScreen,
   HelpScreen,
-  HomeScreen,
   ProfileScreen,
   PromoteScreen,
 } from "../screens";
-import { getHeaderTitle } from "@react-navigation/elements";
+import { getHeaderTitle, useHeaderHeight } from "@react-navigation/elements";
 import Icon from "react-native-vector-icons/Ionicons";
 import {
-  Animated,
   Text,
-  StyleSheet,
   useWindowDimensions,
   View,
   Image,
@@ -23,9 +20,8 @@ import {
 } from "react-native";
 import { BottomNavigation, Header } from "../components";
 import { StackScreenProps } from "@react-navigation/stack";
-import { useContext, useRef } from "react";
-import { useFocusEffect } from "@react-navigation/native";
-import { appStyles, colors } from "../theme";
+import { useContext } from "react";
+import { appStyles } from "../theme";
 import { AuthContext } from "../context";
 
 const Drawer: any = createDrawerNavigator();
@@ -38,16 +34,17 @@ export const SideDrawermenu = ({ route, navigation }: Props) => {
     <Drawer.Navigator
       screenOptions={{
         drawerStyle: {
-          backgroundColor: colors.backgapplight,
+          backgroundColor: "#000",
         },
+        headerTransparent: false,
         animationEnabled: true,
         animationTypeForReplace: "push",
-        overlayColor: "transparent",
+        overlayColor: "rgba(0,0,0,0.5)",
         drawerStatusBarAnimation: "fade",
-        drawerType: dimensions.width >= 768 ? "slide" : "slide",
+        drawerType: dimensions.width >= 768 ? "slide" : "front",
         header: ({ navigation, route, options }: any) => {
           const title = getHeaderTitle(options, route.name);
-          return <Header title={title} navigation={navigation} />;
+          return <Header title="tit" navigation={navigation} />;
         },
       }}
       drawerContent={(props: any) => <MenuHeaderContent {...props} />}

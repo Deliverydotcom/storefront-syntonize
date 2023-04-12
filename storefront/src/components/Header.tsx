@@ -4,6 +4,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 import { WhiteLogo } from "./WhiteLogo";
 import { colors, loginStyles } from "../theme";
 import { WhiteLogoHeader } from "./WhiteLogoHeader";
+import { DrawerActions } from "@react-navigation/native";
 
 type Props = {
   title: string;
@@ -16,7 +17,7 @@ export const Header = ({ title, navigation }: Props) => {
       <View style={{ justifyContent: "center" }}>
         <Text
           style={{ color: "white" }}
-          onPress={() => navigation.openDrawer()}
+          onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
         >
           <Icon name="menu-outline" size={25} />
         </Text>
@@ -46,6 +47,6 @@ const styles = StyleSheet.create({
     paddingTop: 25,
     paddingLeft: 15,
 
-    backgroundColor: colors.backgapp,
+    backgroundColor: "#8EA8A6",
   },
 });
