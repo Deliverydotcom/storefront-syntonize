@@ -1,77 +1,91 @@
-import React from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import React from "react";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {
   HomeScreen,
   ManageHours,
+  OrdersHistory,
   PendingOrders,
   ProfileScreen,
-} from '../screens';
-import Icon from 'react-native-vector-icons/Ionicons';
+} from "../screens";
+import Icon from "react-native-vector-icons/Ionicons";
 
-import {colors} from '../theme';
-import {Text, Animated} from 'react-native';
-import {useFocusEffect} from '@react-navigation/native';
+import { colors } from "../theme";
+import { Text, Animated } from "react-native";
+import { useFocusEffect } from "@react-navigation/native";
 
 const Tab = createBottomTabNavigator();
 
 export const BottomNavigation = () => {
   return (
     <Tab.Navigator
-      screenOptions={({route}) => ({
+      screenOptions={({ route }) => ({
         unmountOnBlur: true,
         headerShown: false,
         animationEnabled: true,
-        animationTypeForReplace: 'push',
-        tabBarActiveTintColor: colors.tertiary,
+        animationTypeForReplace: "push",
+        tabBarActiveTintColor: colors.redrosebold,
+        tabBarInactiveTintColor: "white",
         tabBarStyle: {
-          borderTopColor: colors.tertiary,
-          borderTopWidth: 2,
+          height: 60,
+          borderTopColor: colors.redrose,
+          backgroundColor: colors.redroselight,
+          borderTopWidth: 4,
           elevation: 0,
         },
         tabBarLabelStyle: {
           fontSize: 0,
           margin: 0,
           padding: 0,
-          display: 'none',
+          display: "none",
         },
-        tabBarIcon: props => {
+        tabBarIcon: (props) => {
           let iconName: any = null;
           switch (route.name) {
-            case 'Home':
+            case "Home":
               iconName = <Icon name="home-outline" size={25} />;
               break;
 
-            case 'PendingOrders':
+            case "PendingOrders":
               iconName = <Icon name="timer-outline" size={25} />;
               break;
 
-            case 'ManageHours':
+            case "ManageHours":
               iconName = <Icon name="time-outline" size={25} />;
               break;
 
-            case 'ProfileScreen':
+            case "ProfileScreen":
               iconName = null;
               break;
+
+            case "OrdersHistory":
+              iconName = <Icon name="stopwatch" size={25} />;
+              break;
           }
-          return <Text style={{color: props.color}}>{iconName}</Text>;
+          return <Text style={{ color: props.color }}>{iconName}</Text>;
         },
-      })}>
+      })}
+    >
       <Tab.Screen
         name="Home"
         options={{
-          title: '',
+          title: "",
         }}
         component={HomeScreen}
       />
       <Tab.Screen
-        options={{title: ''}}
+        options={{ title: "" }}
         name="PendingOrders"
         component={PendingOrders}
       />
       <Tab.Screen
-        options={{title: ''}}
+        options={{ title: "" }}
         name="ManageHours"
         component={ManageHours}
+      />
+      <Tab.Screen
+        options={{ title: "" }}
+        name="OrdersHistory"
+        component={OrdersHistory}
       />
     </Tab.Navigator>
   );

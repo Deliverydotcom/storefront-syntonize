@@ -15,20 +15,21 @@ import { BottomNavigation } from "../components";
 import { Platform } from "react-native";
 import { LoginScreen } from "../screens/LoginScreen";
 import { ForgotCredentials } from "../screens/ForgotCredentials";
+import { colors } from "../theme";
 
 const Stack = createStackNavigator();
 
 export const Navigator = () => {
   const { status } = useContext(AuthContext);
   console.log(status);
-  if (Platform.OS !== "web" && status === "checking") return <LoadingScreen />;
+  // if (Platform.OS !== "web" && status === "checking") return <LoadingScreen />;
 
   return (
     <>
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
-          cardStyle: { backgroundColor: "#eab676" },
+          cardStyle: { backgroundColor: colors.backgapp },
         }}
       >
         {status !== "authenticated" ? (
