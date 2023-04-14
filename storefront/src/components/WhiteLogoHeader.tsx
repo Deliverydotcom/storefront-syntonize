@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, Platform, StyleSheet, Text, View } from "react-native";
+import { Platform, StyleSheet, Text, View } from "react-native";
 import LogoDelivery from "../assets/img/logo-delivery.svg";
 
 export const WhiteLogoHeader = () => {
@@ -15,8 +15,8 @@ export const WhiteLogoHeader = () => {
         style={{
           fontSize: 20,
           color: "white",
-
           marginTop: 6,
+          marginLeft: 8,
         }}
       >
         StoreFront
@@ -25,20 +25,20 @@ export const WhiteLogoHeader = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  image: {
-    flex: 1,
-    justifyContent: "center",
-  },
-  text: {
-    color: "white",
-    fontSize: 42,
-    lineHeight: 84,
-    fontWeight: "bold",
-    textAlign: "center",
-    backgroundColor: "#000000c0",
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//   },
+//   image: {
+//     flex: 1,
+//     justifyContent: "center",
+//   },
+//   text: {
+//     color: "white",
+//     fontSize: 42,
+//     lineHeight: 84,
+//     fontWeight: "bold",
+//     textAlign: "center",
+//     backgroundColor: "#000000c0",
+//   },
+// });

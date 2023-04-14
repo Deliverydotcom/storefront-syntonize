@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   View,
   Text,
@@ -6,24 +6,32 @@ import {
   KeyboardAvoidingView,
   Platform,
   TouchableOpacity,
-} from 'react-native';
-import {Background, WhiteLogo} from '../components';
-import {loginStyles} from '../theme';
-import {StackScreenProps} from '@react-navigation/stack';
-import {useForm} from '../hooks';
+} from "react-native";
+import { Background, WhiteLogo } from "../components";
+import { loginStyles } from "../theme";
+import { StackScreenProps } from "@react-navigation/stack";
+import { useForm } from "../hooks";
 
-interface Props extends StackScreenProps<any, any> {}
+interface Props extends StackScreenProps<any, any> {
+  navigation: any;
+}
 
-export const ForgotCredentials = ({navigation}: Props) => {
-  const {email, password, form, onChange} = useForm({email: '', password: ''});
+export const ForgotCredentials = ({ navigation }: Props) => {
+  const { email, password, form, onChange } = useForm({
+    email: "",
+    password: "",
+  });
 
-  const onSend = () => {};
+  const onSend = () => {
+    console.log("first");
+  };
   return (
     <>
       <Background />
       <KeyboardAvoidingView
-        style={{flex: 1}}
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+        style={{ flex: 1 }}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+      >
         <View style={loginStyles.globalContainer}>
           <WhiteLogo />
           <Text style={loginStyles.subtext}>Forgot password</Text>
@@ -34,11 +42,11 @@ export const ForgotCredentials = ({navigation}: Props) => {
             keyboardType="email-address"
             underlineColorAndroid="white"
             value={email}
-            onChangeText={value => onChange(value, 'email')}
+            onChangeText={(value) => onChange(value, "email")}
             onSubmitEditing={onSend}
             style={[
               loginStyles.inputField,
-              Platform.OS === 'ios' && loginStyles.inputFieldIOS,
+              Platform.OS === "ios" && loginStyles.inputFieldIOS,
             ]}
             selectionColor="white"
             autoCapitalize="none"
@@ -48,14 +56,16 @@ export const ForgotCredentials = ({navigation}: Props) => {
             <TouchableOpacity
               activeOpacity={0.8}
               style={loginStyles.button}
-              onPress={onSend}>
+              onPress={onSend}
+            >
               <Text style={loginStyles.buttonText}>Login</Text>
             </TouchableOpacity>
           </View>
           <View style={loginStyles.forgotContainer}>
             <TouchableOpacity
               activeOpacity={0.8}
-              onPress={() => navigation.replace('LoginScreen')}>
+              onPress={() => navigation.replace("LoginScreen")}
+            >
               <Text style={loginStyles.forgotText}>Go to login</Text>
             </TouchableOpacity>
           </View>

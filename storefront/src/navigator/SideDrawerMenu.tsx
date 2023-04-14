@@ -9,7 +9,7 @@ import {
   ProfileScreen,
   PromoteScreen,
 } from "../screens";
-import { getHeaderTitle, useHeaderHeight } from "@react-navigation/elements";
+import { getHeaderTitle } from "@react-navigation/elements";
 import Icon from "react-native-vector-icons/Ionicons";
 import {
   Text,
@@ -18,14 +18,18 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import { BottomNavigation, Header } from "../components";
+import { Header } from "../components";
 import { StackScreenProps } from "@react-navigation/stack";
 import { useContext } from "react";
 import { appStyles } from "../theme";
 import { AuthContext } from "../context";
+import { BottomNavigation } from "../components/BottomNavigation";
 
 const Drawer: any = createDrawerNavigator();
-interface Props extends StackScreenProps<any, any> {}
+interface Props extends StackScreenProps<any, any> {
+  route: any;
+  navigation: any;
+}
 
 export const SideDrawermenu = ({ route, navigation }: Props) => {
   const dimensions = useWindowDimensions();

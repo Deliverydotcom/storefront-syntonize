@@ -1,5 +1,8 @@
 {
-  "compilerOptions": { "strict": true, "typeRoots": ["./src/types"]},
-  "extends": "expo/tsconfig.base",
-  
+  "compilerOptions": {
+    "strict": true,
+    "module": "es6",
+    "typeRoots": ["./src/types"]
+  },
+  "extends": "expo/tsconfig.base"
 }

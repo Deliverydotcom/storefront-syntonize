@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import Icon from "react-native-vector-icons/Ionicons";
 
 export const colors = {
   backgapp: "#090B21",
@@ -29,7 +30,11 @@ export const appStyles = StyleSheet.create({
     paddingVertical: 10,
     minHeight: 600,
   },
-
+  rotation: {
+    height: 20,
+    width: 20,
+    top: -9,
+  },
   whiteLine: {
     borderBottomColor: "#ffffff",
     borderBottomWidth: 1,
@@ -109,6 +114,11 @@ export const appStyles = StyleSheet.create({
     paddingLeft: 10,
   },
   menuIcon: {
+    color: "white",
+  },
+  sectionTitle: {
+    fontSize: 20,
+    fontWeight: "bold",
     color: "white",
   },
 });
