@@ -5,14 +5,12 @@ export const loginStyles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 40,
     justifyContent: "center",
-    height: 600,
     marginBottom: 50,
   },
   linearGradient: {
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 5,
-    height: 600,
     marginBottom: 50,
   },
   title: {

@@ -1,7 +1,7 @@
-import {Usuario} from './LoginResponse';
+import { Usuario } from "./LoginResponse";
 
 export interface AuthStatus {
-  status: 'checking' | 'authenticated' | 'not-authenticated';
+  status: "checking" | "authenticated" | "not-authenticated";
   token: string | null;
   errorMessage: string;
   user: Usuario | null;

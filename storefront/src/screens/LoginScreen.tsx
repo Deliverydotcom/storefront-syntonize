@@ -7,26 +7,29 @@ import {
   KeyboardAvoidingView,
   Keyboard,
   Alert,
+  useWindowDimensions,
 } from "react-native";
-import { Background, WhiteLogo } from "../components";
+import { WhiteLogo } from "../components";
 import { loginStyles } from "../theme/loginTheme";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { useForm } from "../hooks";
 import { StackScreenProps } from "@react-navigation/stack";
-import LinearGradient from "react-native-linear-gradient";
+import { LinearGradient } from "expo-linear-gradient";
 
 // import {auth} from '../utils/firebase';
 // import {getAuth, signInWithEmailAndPassword, signOut} from 'firebase/auth';
 import { AuthContext } from "../context";
 
-interface Props extends StackScreenProps<any, any> {}
+interface Props extends StackScreenProps<any, any> {
+  navigation: any;
+}
 
 export const LoginScreen = ({ navigation }: Props) => {
+  const { signIn, errorMessage, removeError } = useContext(AuthContext);
   const { email, password, form, onChange } = useForm({
     email: "",
     password: "",
   });
-  const { signIn, errorMessage, removeError } = useContext(AuthContext);
 
   //USING FIREBASE AUTH
   // commented for check if we use
@@ -47,11 +50,6 @@ export const LoginScreen = ({ navigation }: Props) => {
   //   Keyboard.dismiss();
   // };
 
-  const onLogin = () => {
-    Keyboard.dismiss();
-    signIn({ correo: email, password });
-  };
-
   useEffect(() => {
     if (errorMessage.length === 0) return;
     Alert.alert("Login incorrecto", errorMessage, [
@@ -59,6 +57,13 @@ export const LoginScreen = ({ navigation }: Props) => {
     ]);
   }, [errorMessage]);
 
+  const onLogin = () => {
+    Keyboard.dismiss();
+    signIn({ correo: email, password });
+  };
+  const layout = useWindowDimensions();
+
+  console.log(layout.height);
   return (
     <>
       <KeyboardAvoidingView
@@ -67,9 +72,11 @@ export const LoginScreen = ({ navigation }: Props) => {
       >
         <LinearGradient
           colors={["#8EA8A6", "#9EB1A8", "#FFFFFF"]}
-          style={loginStyles.linearGradient}
+          style={[loginStyles.linearGradient, { height: layout.height }]}
         >
-          <View style={loginStyles.globalContainer}>
+          <View
+            style={[loginStyles.globalContainer, { height: layout.height }]}
+          >
             <WhiteLogo />
             <Text style={loginStyles.subtext}>
               Simple tools for managing you online store.

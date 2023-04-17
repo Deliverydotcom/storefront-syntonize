@@ -1,4 +1,4 @@
-export * from './appTheme';
+export * from "./appTheme";
 
-export * from './loginTheme';
-export * from './homeTheme';
+export * from "./loginTheme";
+export * from "./homeTheme";
