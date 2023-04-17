@@ -1,2 +1,3 @@
-export * from './AuthStatus';
-export * from './LoginResponse';
+export * from './data-dummie';
+export * from "./AuthStatus";
+export * from "./LoginResponse";

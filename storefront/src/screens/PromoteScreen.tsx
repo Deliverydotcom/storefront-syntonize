@@ -1,12 +1,8 @@
-import React, { useContext, useEffect, useRef } from "react";
-import { Button, Text, View } from "react-native";
+import React, { useContext } from "react";
+import { Animated, Button, Text } from "react-native";
 import { homeStyles } from "../theme";
 import { AuthContext } from "../context";
-import { BottomNavigation } from "../components";
-import { SideDrawermenu } from "../navigator/SideDrawerMenu";
-import { Animated } from "react-native";
-import { StackScreenProps } from "@react-navigation/stack";
-import { useFocusEffect } from "@react-navigation/native";
+
 import { useFade } from "../hooks";
 
 export const PromoteScreen = () => {

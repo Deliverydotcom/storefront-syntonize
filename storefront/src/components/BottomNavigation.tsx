@@ -1,17 +1,10 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import {
-  HomeScreen,
-  ManageHours,
-  OrdersHistory,
-  PendingOrders,
-  ProfileScreen,
-} from "../screens";
+import { HomeScreen, ManageHours, OrdersHistory, MenuEditor } from "../screens";
 import Icon from "react-native-vector-icons/Ionicons";
 
 import { colors } from "../theme";
-import { Text, Animated } from "react-native";
-import { useFocusEffect } from "@react-navigation/native";
+import { Text } from "react-native";
 
 const Tab = createBottomTabNavigator();
 
@@ -45,8 +38,8 @@ export const BottomNavigation = () => {
               iconName = <Icon name="home-outline" size={25} />;
               break;
 
-            case "PendingOrders":
-              iconName = <Icon name="timer-outline" size={25} />;
+            case "MenuEditor":
+              iconName = <Icon name="create-outline" size={25} />;
               break;
 
             case "ManageHours":
@@ -74,8 +67,8 @@ export const BottomNavigation = () => {
       />
       <Tab.Screen
         options={{ title: "" }}
-        name="PendingOrders"
-        component={PendingOrders}
+        name="MenuEditor"
+        component={MenuEditor}
       />
       <Tab.Screen
         options={{ title: "" }}

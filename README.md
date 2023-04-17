@@ -6,14 +6,13 @@ This project was created using React Native Expo
 
 ## Preview settings
 
-### Start Backend dummie (only on local develop)
+### Start Backend on Render Server
 
-1. Download and open **"backend-dummie"**
-2. Open it in terminal using path and start using Yarn:
+1. Just open this URI
 
-    ```yarn start ```
+    ```https://api.render.com/deploy/srv-cgrhq002qv2bi03iv9hg?key=Z7b0iCbdCbk ```
    
-   When it's running, go to the next step
+   ...and wait for deploy (a few minutes)
    
 ## Start Frontend on localhost
 

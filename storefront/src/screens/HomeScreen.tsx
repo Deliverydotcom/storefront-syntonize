@@ -1,94 +1,39 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import {
-  Animated,
-  Button,
   Text,
   View,
-  SafeAreaView,
   ScrollView,
+  Animated,
+  useWindowDimensions,
 } from "react-native";
+// import Animated from "react-native-reanimated";
 import { appStyles, colors, homeStyles } from "../theme";
 import { AuthContext } from "../context";
-import { BottomNavigation, Header } from "../components";
-import { SideDrawermenu } from "../navigator/SideDrawerMenu";
 import { useDimensions, useFade } from "../hooks";
 import { Tab, TabView } from "@rneui/themed";
 import Icon from "react-native-vector-icons/Ionicons";
-import LinearGradient from "react-native-linear-gradient";
+import { LinearGradient } from "expo-linear-gradient";
 import { Platform } from "react-native";
+import { StoreDataHeader } from "../components";
 
 export const HomeScreen = () => {
-  const { user, token, logOut } = useContext(AuthContext);
+  //const { user, token, logOut } = useContext(AuthContext);
   const [index, setIndex] = React.useState(0);
   const { dimen } = useDimensions();
   const fadeAnim = useFade();
   const styles = homeStyles(fadeAnim);
+  const layout = useWindowDimensions();
 
   return (
     <>
       <Animated.View style={appStyles.app}>
         <LinearGradient
           colors={["#8EA8A6", "#FFFFFF", "#FFFFFF"]}
-          style={appStyles.linearGradient}
+          style={[appStyles.linearGradient, { height: layout.height }]}
           start={{ x: 0.2, y: 0.2 }}
         >
           <ScrollView>
-            <View style={[appStyles.whiteLine, { marginBottom: 8 }]} />
-            <View style={appStyles.row}>
-              <Text style={{ fontSize: 16, color: "white" }}>
-                User Random Store
-              </Text>
-            </View>
-            <View style={[appStyles.column, { marginTop: 6, marginBottom: 6 }]}>
-              <View>
-                <Text
-                  style={[styles.miniText, { marginBottom: 3, color: "white" }]}
-                >
-                  Default Order Estimates
-                </Text>
-              </View>
-              <View
-                style={{
-                  flexDirection: "row",
-                  flexWrap: "wrap",
-                  justifyContent: "space-between",
-                }}
-              >
-                <Text style={[styles.testDataSettings, { color: "white" }]}>
-                  Delivery: <Text style={{ fontWeight: "bold" }}>60 mins</Text>
-                </Text>
-
-                <Text style={[styles.testDataSettings, { color: "white" }]}>
-                  Pickup: <Text style={{ fontWeight: "bold" }}>15 mins</Text>
-                </Text>
-              </View>
-              <View
-                style={[
-                  appStyles.whiteLine,
-                  { marginTop: 12, marginBottom: 8 },
-                ]}
-              />
-              <View
-                style={{
-                  flexDirection: "row",
-                  flexWrap: "wrap",
-                }}
-              >
-                <Text style={styles.textforIcons}>
-                  <Icon name="ellipse" style={{ color: "#AFCA0B" }} size={10} />{" "}
-                  Open
-                </Text>
-                <Text style={styles.textforIcons}>
-                  <Icon name="ellipse" style={{ color: "#AFCA0B" }} size={10} />{" "}
-                  Sound On
-                </Text>
-                <Text style={styles.textforIcons}>
-                  <Icon name="ellipse" style={{ color: "#AFCA0B" }} size={10} />{" "}
-                  10 Griffin RD
-                </Text>
-              </View>
-            </View>
-
+            <StoreDataHeader />
             <View style={{ height: "100%", marginTop: 10 }}>
               <Tab
                 containerStyle={{ marginRight: 4 }}
@@ -145,7 +90,7 @@ export const HomeScreen = () => {
                       { flex: 1, flexDirection: "column" },
                     ]}
                   >
-                    <View
+                    <Animated.View
                       style={[
                         dimen === "portraitIOS"
                           ? { left: 75 } //vertical ios
@@ -157,20 +102,16 @@ export const HomeScreen = () => {
                           : dimen === "landscapeAndroid"
                           ? { left: 175 } //horizontal android
                           : null,
-                        {
-                          height: 20,
-                          width: 20,
-                          top: -6,
-                          transform: [{ rotate: "180deg" }],
-                        },
+
+                        appStyles.rotation,
                       ]}
                     >
                       <Icon
-                        name="triangle"
-                        size={15}
+                        name="caret-down-sharp"
+                        size={25}
                         style={{ color: colors.redrose }}
                       />
-                    </View>
+                    </Animated.View>
 
                     <View
                       style={{ overflow: "scroll", padding: 10, marginTop: 10 }}
@@ -191,7 +132,7 @@ export const HomeScreen = () => {
                 </TabView.Item>
                 <TabView.Item style={[appStyles.cardbottom, { width: "100%" }]}>
                   <View style={[appStyles.row, { flexDirection: "column" }]}>
-                    <View
+                    <Animated.View
                       style={[
                         dimen === "portraitIOS"
                           ? { left: 252 } //vertical ios
@@ -203,20 +144,16 @@ export const HomeScreen = () => {
                           : dimen === "landscapeAndroid"
                           ? { left: 175 } //horizontal android
                           : null,
-                        {
-                          height: 20,
-                          width: 20,
-                          top: -6,
-                          transform: [{ rotate: "180deg" }],
-                        },
+
+                        appStyles.rotation,
                       ]}
                     >
                       <Icon
-                        name="triangle"
-                        size={15}
+                        name="caret-down-sharp"
+                        size={25}
                         style={{ color: colors.redrose }}
                       />
-                    </View>
+                    </Animated.View>
 
                     <View style={{ padding: 15 }}>
                       <ScrollView>

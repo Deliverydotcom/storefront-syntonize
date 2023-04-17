@@ -1,8 +1,6 @@
-import React, { FC } from "react";
-import { Button, StyleSheet, Text, View } from "react-native";
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
-import { WhiteLogo } from "./WhiteLogo";
-import { colors, loginStyles } from "../theme";
 import { WhiteLogoHeader } from "./WhiteLogoHeader";
 import { DrawerActions } from "@react-navigation/native";
 
@@ -46,7 +44,6 @@ const styles = StyleSheet.create({
     paddingRight: 15,
     paddingTop: 25,
     paddingLeft: 15,
-
     backgroundColor: "#8EA8A6",
   },
 });

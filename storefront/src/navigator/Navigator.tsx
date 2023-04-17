@@ -3,19 +3,20 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { AuthContext } from "../context";
 import {
   HomeScreen,
-  ProtectedScreen,
   LoadingScreen,
   ProfileScreen,
   ConfigScreen,
   PromoteScreen,
   HelpScreen,
+  MenuEditor,
 } from "../screens";
 import { SideDrawermenu } from "./SideDrawerMenu";
-import { BottomNavigation } from "../components";
+
 import { Platform } from "react-native";
 import { LoginScreen } from "../screens/LoginScreen";
 import { ForgotCredentials } from "../screens/ForgotCredentials";
 import { colors } from "../theme";
+import { BottomNavigation } from "../components/BottomNavigation";
 
 const Stack = createStackNavigator();
 
@@ -23,6 +24,7 @@ export const Navigator = () => {
   const { status } = useContext(AuthContext);
   console.log(status);
   // if (Platform.OS !== "web" && status === "checking") return <LoadingScreen />;
+  // if (status === "checking") return <LoadingScreen />;
 
   return (
     <>
@@ -59,6 +61,7 @@ export const Navigator = () => {
             <Stack.Screen name="HelpScreen" component={HelpScreen} />
             <Stack.Screen name="PromoteScreen" component={PromoteScreen} />
             <Stack.Screen name="ConfigScreen" component={ConfigScreen} />
+            <Stack.Screen name="MenuEditor" component={MenuEditor} />
           </>
         )}
       </Stack.Navigator>

@@ -1,10 +1,10 @@
 import React from "react";
 import { Text, View } from "react-native";
 
-export const ProtectedScreen = () => {
+export const RequestSupport = () => {
   return (
     <View>
-      <Text>Protected Screen</Text>
+      <Text>RequestSupport</Text>
     </View>
   );
 };
