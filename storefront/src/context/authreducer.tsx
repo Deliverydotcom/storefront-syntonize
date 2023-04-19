@@ -1,43 +1,43 @@
-import { AuthStatus, Usuario } from "../interfaces";
+import { AuthStatus, User } from '../interfaces';
 
 type AuthAction =
-  | { type: "signUp"; payload: { token: string; user: Usuario } }
-  | { type: "addError"; payload: string }
-  | { type: "removeError" }
-  | { type: "notAuthenticated" }
-  | { type: "logout" };
+  | { type: 'signUp'; payload: { token: string; user: User } }
+  | { type: 'addError'; payload: string }
+  | { type: 'removeError' }
+  | { type: 'notAuthenticated' }
+  | { type: 'logout' };
 
 export const authReducer = (
   state: AuthStatus,
   action: AuthAction
 ): AuthStatus => {
   switch (action.type) {
-    case "addError":
+    case 'addError':
       return {
         ...state,
         user: null,
-        status: "not-authenticated",
+        status: 'not-authenticated',
         token: null,
         errorMessage: action.payload,
       };
 
-    case "removeError":
-      return { ...state, errorMessage: "" };
+    case 'removeError':
+      return { ...state, errorMessage: '' };
 
-    case "signUp":
+    case 'signUp':
       return {
         ...state,
-        errorMessage: "",
-        status: "authenticated",
+        errorMessage: '',
+        status: 'authenticated',
         token: action.payload.token,
         user: action.payload.user,
       };
 
-    case "logout":
-    case "notAuthenticated":
+    case 'logout':
+    case 'notAuthenticated':
       return {
         ...state,
-        status: "not-authenticated",
+        status: 'not-authenticated',
         token: null,
         user: null,
       };

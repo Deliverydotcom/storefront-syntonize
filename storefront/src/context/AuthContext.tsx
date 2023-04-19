@@ -1,15 +1,15 @@
-import React, { createContext, useEffect, useReducer } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { AuthStatus, LoginData, LoginResponse, Usuario } from "../interfaces";
-import { authReducer } from "./authreducer";
-import storeFrontApi from "../api/storeFrontApi";
-import { checkToken } from "../utils";
+import React, { createContext, useEffect, useReducer } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { AuthStatus, LoginData, LoginResponse, User } from '../interfaces';
+import { authReducer } from './authreducer';
+import storeFrontApi from '../api/storeFrontApi';
+import { checkToken } from '../utils';
 
 type AuthContextProps = {
   errorMessage: string;
   token: string | null;
-  user: Usuario | null;
-  status: "checking" | "authenticated" | "not-authenticated";
+  user: User | null;
+  status: 'checking' | 'authenticated' | 'not-authenticated';
   signUp: () => void;
   signIn: (loginData: LoginData) => void;
   logOut: () => void;
@@ -17,10 +17,10 @@ type AuthContextProps = {
 };
 
 const authInitialState: AuthStatus = {
-  status: "checking",
+  status: 'checking',
   token: null,
   user: null,
-  errorMessage: "",
+  errorMessage: '',
 };
 
 export const AuthContext = createContext({} as AuthContextProps);
@@ -41,28 +41,40 @@ export const AuthProvider = ({ children }: any) => {
   // SIGN IN ACTION
   //---------------------------------------------------
 
-  const signIn = async ({ correo, password }: LoginData) => {
+  const signIn = async ({
+    username,
+    password,
+    g_recaptcha_response,
+  }: LoginData) => {
     try {
       storeFrontApi
-        .post<LoginResponse>("/auth/login", { correo, password })
-        .then(async (resp) => {
+        .post<LoginResponse>('/customer/auth', {
+          username: username,
+          password: password,
+          client_id: '',
+          client_secret: '',
+          g_recaptcha_response: g_recaptcha_response,
+          grant_type: 'password',
+          scope: 'payment,global',
+        })
+        .then(async resp => {
           dispatch({
-            type: "signUp",
+            type: 'signUp',
             payload: {
-              token: resp.data.token,
-              user: resp.data.usuario,
+              token: resp.data.access_token,
+              user: resp.data.user,
             },
           });
 
-          await AsyncStorage.setItem("token", resp.data.token);
+          await AsyncStorage.setItem('token', resp.data.access_token);
         })
-        .catch((err) => {
+        .catch(err => {
           console.log(err);
         });
     } catch (error: any) {
       dispatch({
-        type: "addError",
-        payload: error.response.data.msg || "Información incorrecta",
+        type: 'addError',
+        payload: error.response.data.msg || 'Información incorrecta',
       });
     }
   };
@@ -91,9 +103,9 @@ export const AuthProvider = ({ children }: any) => {
   // LOGOUT ACTION
   //---------------------------------------------------
   const logOut = async () => {
-    await AsyncStorage.removeItem("token"); //destroy stored
+    await AsyncStorage.removeItem('token'); //destroy stored
     dispatch({
-      type: "logout",
+      type: 'logout',
     });
   };
 
@@ -102,7 +114,7 @@ export const AuthProvider = ({ children }: any) => {
   //---------------------------------------------------
   const removeError = () => {
     dispatch({
-      type: "removeError",
+      type: 'removeError',
     });
   };
 

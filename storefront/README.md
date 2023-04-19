@@ -33,4 +33,9 @@ TypeScript is a very superset of JavaScript which gives you static types and pow
 
 ## 📝 Notes
 
+## Android Setup for Windows
+- Create a blank `local.properties` file in `android` folder
+- Set your path for Android SDK. Example: `sdk.dir=C:\\Users\\YOUR_USERNAME\\AppData\\Local\\Android\\Sdk`
+
+
 - [Expo TypeScript guide](https://docs.expo.dev/versions/latest/guides/typescript/)

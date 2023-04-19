@@ -4,7 +4,8 @@ import {API_URL_ANDROID, API_URL_IOS} from 'react-native-dotenv';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const baseURL =
-  Platform.OS === 'ios' || Platform.OS === 'web' ? `${API_URL_IOS}/api` : `${API_URL_ANDROID}/api`;
+  //Platform.OS === 'ios' || Platform.OS === 'web' ? `${API_URL_IOS}/api` : `${API_URL_ANDROID}/api`;
+  'https://www.delivery.com/api';
  
 
 const storeFrontApi = axios.create({baseURL});

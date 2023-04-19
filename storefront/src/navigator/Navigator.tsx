@@ -1,21 +1,18 @@
-import React, { useContext } from "react";
-import { createStackNavigator } from "@react-navigation/stack";
-import { AuthContext } from "../context";
+import { createStackNavigator } from '@react-navigation/stack';
+import React, { useContext } from 'react';
+import { BottomNavigation } from '../components';
+import { AuthContext } from '../context';
 import {
-  HomeScreen,
-  ProtectedScreen,
-  LoadingScreen,
-  ProfileScreen,
   ConfigScreen,
-  PromoteScreen,
   HelpScreen,
-} from "../screens";
-import { SideDrawermenu } from "./SideDrawerMenu";
-import { BottomNavigation } from "../components";
-import { Platform } from "react-native";
-import { LoginScreen } from "../screens/LoginScreen";
-import { ForgotCredentials } from "../screens/ForgotCredentials";
-import { colors } from "../theme";
+  HomeScreen,
+  ProfileScreen,
+  PromoteScreen,
+} from '../screens';
+import { ForgotCredentials } from '../screens/ForgotCredentials';
+import { LoginScreen } from '../screens/LoginScreen';
+import { colors } from '../theme';
+import { SideDrawermenu } from './SideDrawerMenu';
 
 const Stack = createStackNavigator();
 
@@ -32,7 +29,7 @@ export const Navigator = () => {
           cardStyle: { backgroundColor: colors.backgapp },
         }}
       >
-        {status !== "authenticated" ? (
+        {status !== 'authenticated' ? (
           <>
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
             <Stack.Screen
@@ -51,7 +48,7 @@ export const Navigator = () => {
             <Stack.Screen
               options={{
                 animationEnabled: true,
-                animationTypeForReplace: "push",
+                animationTypeForReplace: 'push',
               }}
               name="ProfileScreen"
               component={ProfileScreen}
